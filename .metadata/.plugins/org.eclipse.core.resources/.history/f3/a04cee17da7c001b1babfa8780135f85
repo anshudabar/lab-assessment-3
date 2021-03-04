@@ -1,0 +1,10 @@
+package com.tma.model.service;
+
+import java.util.List;
+
+
+public interface TraineeServicee {
+	public void traineeAdd(Trainee trainee);
+
+	public List<Trainee> getAllTrainees();
+}

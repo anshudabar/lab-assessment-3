@@ -1,0 +1,5 @@
+package com.tma.exceptions;
+
+public class DataAccessException {
+
+}

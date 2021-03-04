@@ -1,0 +1,21 @@
+package com.tma.model.service;
+
+import java.util.List;
+
+import com.tma.model.dao.Trainee;
+
+public class TraineServiceeImple implements TraineeServicee {
+
+	@Override
+	public void traineeAdd(Trainee trainee) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Trainee> getAllTrainees() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

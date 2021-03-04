@@ -1,0 +1,53 @@
+package com.tma.web.controller;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.tma.model.dao.Trainee;
+import com.tma.model.service.TraineeServicee;
+import com.tma.model.service.TraineeServiceeImple;
+
+@WebServlet("/TmController.do")
+public class TmController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private TraineeServicee tService = new TraineeServiceeImple();
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String action = request.getParameter("action");
+
+		if (action.equalsIgnoreCase("")) {
+			RequestDispatcher reqd = request.getRequestDispatcher("WEB-INF/views/HomePage.jsp");
+			reqd.forward(request, response);
+		}
+
+		else if (action.equalsIgnoreCase("viewAll")) {
+			List<Trainee> alltrainees = tService.getAllTrainees();
+			request.setAttribute("alltrainees", alltrainees);
+			RequestDispatcher reqd = request.getRequestDispatcher("WEB-INF/views/ViewAll.jsp");
+			reqd.forward(request, response);
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String name = request.getParameter("name");
+		String branch = request.getParameter("branch");
+		Double percentage = Double.parseDouble(request.getParameter("percentage"));
+		Trainee trainee = new Trainee(name, branch, percentage);
+		tService.traineeAdd(trainee);
+		List<Trainee> trainees = traineeService.allTrainees();
+		request.setAttribute("trainees", trainees);
+		response.sendRedirect("TraineeManagement.do?action=show");
+
+	}
+
+}

@@ -1,0 +1,36 @@
+package com.tma.model.dao;
+
+import java.util.List;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
+import com.tma.model.connection.ConnectionFactory;
+
+public class TraineeDaoImple implements TraineeDao {
+	
+	private Connection connection;
+	
+	
+	
+	public TraineeDaoImple() {
+		this.connection = ConnectionFactory.getConnection();
+	}
+
+	@Override
+	public void traineeAdd(Trainee trainee) {
+		try {
+			PreparedStatement ps = connection.preparedStatement("");
+		}
+		catch(Exception e) {
+			
+		}
+		
+	}
+
+	@Override
+	public List<Trainee> getAllTrainees() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

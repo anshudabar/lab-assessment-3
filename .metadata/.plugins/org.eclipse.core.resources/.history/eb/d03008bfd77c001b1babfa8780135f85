@@ -1,0 +1,5 @@
+package com.tma.model.connection;
+
+public class ConnectionFactory {
+
+}
